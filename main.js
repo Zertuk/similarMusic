@@ -1,6 +1,4 @@
-var searchInput = "Kanye West";
-
-	var id = '';
+	var searchInput = "Kanye West";
 
 	function artistIDLookUp() {	
 		$.ajax({
@@ -9,20 +7,28 @@ var searchInput = "Kanye West";
 			dataType: "json",
 			success: function(data) {
 				if (data.artists.items[0].id) {
-					id = data.artists.items[0].id;
+					var id = data.artists.items[0].id;
+					relatedArtistLookUp(id);
 				}
 			}
 		});
 	};
 
-	function relatedArtistLookUp() {
+	function relatedArtistLookUp(id) {
 		$.ajax({
 			type: "GET",
 			url: "https://api.spotify.com/v1/artists/" + id + "/related-artists",
 			dataType: "json",
 			success: function(data) {
-				console.log(data);
+				var relatedArtists = data;
+				appendArtistData(relatedArtists);
 			}
 		});
 	}
+
+	function appendArtistData(relatedArtists) {
+		console.log(relatedArtists.artists.length);
+	}
+
+	artistIDLookUp();
 
