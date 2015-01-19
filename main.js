@@ -21,6 +21,7 @@
 			dataType: "json",
 			success: function(data) {
 				var relatedArtists = data;
+				console.log(relatedArtists);
 				appendArtistData(relatedArtists);
 			}
 		});
@@ -28,6 +29,12 @@
 
 	function appendArtistData(relatedArtists) {
 		console.log(relatedArtists.artists.length);
+		for (var i = 0; i < relatedArtists.artists.length; i = i + 1) {
+			$('.test').append("<div class = 'artist'>" +
+								"<img class = 'artistImageSmall' alt = 'Artist Image' src = '" + relatedArtists.artists[i].images[1].url + "''>" +
+							"</div>"
+								);
+		}
 	}
 
 	artistIDLookUp();
