@@ -1,0 +1,14 @@
+body {
+	background-color: #3f3f3f;
+}
+
+.artist {
+	width: 300px;
+	height: 300px;
+}
+
+.artist img{
+	width: 100%;
+}
+
+
