@@ -11,9 +11,10 @@
     <!-- endbower -->
     <!-- endbuild -->
     <!-- build:css(.tmp) styles/main.css -->
-    <link rel="stylesheet" href="styles/skeleton.css">
+    <link href='http://fonts.googleapis.com/css?family=Raleway' rel='stylesheet' type='text/css'>    <link rel="stylesheet" href="styles/skeleton.css">
     <link rel="stylesheet" href="styles/normalize.css">
     <link rel="stylesheet" href="styles/main.css">
+
     <!-- endbuild -->
   </head>
   <body ng-app="similarMusicApp">
@@ -23,17 +24,25 @@
 
     <!-- Add your site or application content here -->
     <div ng-controller="MainCtrl" class="container">
-      <form role = "form" ng-submit = "artistIDLookUp()">
-        <input type = "text" class = "u-full-width" ng-model = "searchInput">
+      <form class = "searchForm" role = "form" ng-submit = "artistIDLookUp()">
+        <input type = "text" class = "search" ng-model = "searchInput">
         </input>
         <span>
-          <input value = "Search" type = "submit">
+          <button value = "Search" type = "submit">Search</button>
         </span>
       </form>
 
-      <div ng-repeat = "artist in relatedArtists.artists">
-        <img ng-src  = "{{artist.images[1].url}}">
-        <p>{{artist.name}}</p>
+      <div class = "artist" ng-repeat = "artist in relatedArtists.artists">
+        <img class = "artistImage" ng-src  = "{{artist.images[1].url}}">
+        <div class = "artistDescription">
+          <p class = "artistName">{{artist.name}}</p>
+          <p class = "artistGenre">{{artist.genres[0]}}</p>
+
+          <p class = "artistBio">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+        </div>
+          <p class = "artistInfo">youtube</p>
+          <p class = "artistInfo">spotify</p>
+          <p class = "artistInfo">wiki</p>
       </div>
     </div>
 
