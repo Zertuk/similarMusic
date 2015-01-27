@@ -24,7 +24,7 @@ angular
         controller: 'MainCtrl'
       })
       .when('/about', {
-        templateUrl: 'views/about.html',
+        templateUrl: 'views/ma.html',
         controller: 'AboutCtrl'
       })
       .otherwise({
