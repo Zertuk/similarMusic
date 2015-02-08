@@ -25,10 +25,10 @@
     <!-- Add your site or application content here -->
     <div ng-controller="MainCtrl" class="container">
       <form class = "searchForm" role = "form" ng-submit = "artistIDLookUp()">
-        <input type = "text" class = "search" ng-model = "searchInput">
+        <input type = "text" class = "searchInput" ng-model = "searchInput">
         </input>
         <span>
-          <button value = "Search" type = "submit">Search</button>
+          <button class = "searchButton" value = "Search" type = "submit">Search</button>
         </span>
       </form>
       <div class = "wrap">
@@ -39,7 +39,7 @@
           <p class = "artistGenre">{{artist.genres[0]}}</p>
 
           <p class = "artistInfo"><a href = "https://www.youtube.com/results?search_query={{artist.name}}">youtube</a></p>
-          <p class = "artistInfo">spotify</p>
+          <p class = "artistInfo"><a href = "{{artist.external_urls.spotify}}">spotify</a></p>
           <p class = "artistInfo"><a href = "http://en.wikipedia.org/wiki/{{artist.newName}}">wiki</a></p>
           <p class = "artistInfo"><a href = "http://www.discogs.com/search/?q={{artist.name}}">Discogs</a></p>
 
