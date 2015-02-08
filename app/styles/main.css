@@ -6,7 +6,7 @@ body {
 
 input {
   color: #383838;
-  background-color:  #ebebeb;
+  background-color:  #dedede;
 }
 
 button {
@@ -20,28 +20,32 @@ button {
 }
 
 .searchForm {
-  width: 100%;
-  margin-top: 5%;
+  width: 50%;
+  margin-top: 1%;
   text-align: center;
+  position: fixed;
+}
+
+.wrap {
+  width: 100%;
 }
 
 .artist {
-  width: 100%;
-  border: 1px solid red;
-  margin-top: 2%;
+  width: 80%;
+  margin: 0 auto;
+  color: black;
+  background-color:  #dedede;
 }
 
 .artistImage {
-  width: 35%;
+  width: 100%;
+    border-bottom: 1px solid #383838;
+
 }
 
 .artistDescription {
-  display: inline-block;
-  width: 63%;
   margin-left: 1%;
   margin-right: 1%;
-  float: right;
-
 }
 
 .artistInfo {
@@ -53,6 +57,7 @@ button {
   font-size: 1.5em;
 
 }
+
 
 .artistGenre {
   margin: 0;
