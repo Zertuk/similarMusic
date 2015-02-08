@@ -47,10 +47,9 @@ angular.module('similarMusicApp')
     };
     $scope.wikiLookUp = function() {
       for (var i = 0; i < $scope.relatedArtists.artists.length; i++) {
-        $http.defaults.headers.Origin = 'http://www.zertukis.com';
-        $http.get('http://en.wikipedia.org/w/api.php?format=jsonp&action=query&prop=extracts&exsentences=100&titles=Kid%20Cudi').
+        $http.jsonp('http://en.wikipedia.org/w/api.php?format=json&action=query&prop=extracts&exsentences=10&titles=' + $scope.relatedArtists.artists[i].name + '&callback=JSON_CALLBACK').
         success (function(json) {
-          console.log(json);
+          // $scope.relatedArtists.artists[i].bio = json.query.pages
           test = json;
         }).
         error (function() {
