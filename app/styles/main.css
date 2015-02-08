@@ -45,6 +45,7 @@ button {
   margin: 0 auto;
   color: black;
   background-color:  #dedede;
+  display: inline-block;
 }
 
 .artistImage {
@@ -55,7 +56,6 @@ button {
 .artistDescription {
   margin-left: 3%;
   margin-right: 3%;
-  padding-bottom: 1px;
   margin-bottom: 10%;
 }
 
@@ -69,9 +69,24 @@ button {
 
 }
 
-
 .artistGenre {
   margin: 0;
   margin-bottom: 2%;
   font-style: italic;
 }
+
+
+@media (min-width: 550px) {
+  .artist {
+    width: 45%;
+    margin: 2.5%;
+  }
+}
+
+@media (min-width: 900px) {
+  .artist {
+    width: 30%;
+    margin: 1.66%;
+  }
+}
+
