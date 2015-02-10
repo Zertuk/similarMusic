@@ -8,6 +8,7 @@
  * Controller of the similarMusicApp
  */
 var test;
+var wikiArray;
 var searchInput = "";
 
 angular.module('similarMusicApp')
@@ -46,16 +47,27 @@ angular.module('similarMusicApp')
       }
     };
     $scope.wikiLookUp = function() {
+      wikiArray = [];
+      wikiArray.length = 20;
+      var count = 0;
       for (var i = 0; i < $scope.relatedArtists.artists.length; i++) {
-        $http.jsonp('http://en.wikipedia.org/w/api.php?format=json&action=query&prop=extracts&exsentences=10&titles=' + $scope.relatedArtists.artists[i].name + '&callback=JSON_CALLBACK').
+        ($http.jsonp('http://en.wikipedia.org/w/api.php?format=json&action=query&prop=extracts&exsentences=10&titles=' + $scope.relatedArtists.artists[i].name + '&callback=JSON_CALLBACK').
         success (function(json) {
-          // $scope.relatedArtists.artists[i].bio = json.query.pages
-          test = json;
+          console.log(i);
+          test = json.query.pages;
+            for (var property in test) {
+                if (test.hasOwnProperty(property)) {
+                  wikiArray[count] = test[property];
+                  count = count + 1;
+                  break;
+                }
+            }
         }).
         error (function() {
           console.log('Wiki retrieval error');
-        });
+        }));      
       };
+
     };
   };
 
