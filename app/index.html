@@ -14,6 +14,8 @@
     <link href='http://fonts.googleapis.com/css?family=Raleway' rel='stylesheet' type='text/css'>    <link rel="stylesheet" href="styles/skeleton.css">
     <link rel="stylesheet" href="styles/normalize.css">
     <link rel="stylesheet" href="styles/main.css">
+    <link rel="stylesheet" href="css/wiki.css">
+    <link rel="stylesheet" href="css/animation.css">
 
     <!-- endbuild -->
   </head>
@@ -35,15 +37,18 @@
       <div class = "artist" ng-repeat = "artist in relatedArtists.artists">
         <img class = "artistImage" ng-src  = "{{artist.images[1].url}}">
         <div class = "artistDescription">
-          <p class = "artistName">{{artist.name}}</p>
-          <p class = "artistGenre">{{artist.genres[0]}}</p>
+          <div class = "artistCenter">
+            <a href = "https://www.youtube.com/results?search_query={{artist.name}}"><i class="icon-youtube"></i></a>
+            <a href = "{{artist.external_urls.spotify}}"><i class="icon-spotify"></i></a>
+            <a href = "http://en.wikipedia.org/wiki/{{artist.newName}}"><i class="icon-wikipedia"></i></a>
+            <a href = "http://www.discogs.com/search/?q={{artist.name}}"><i class="icon-cd"></i></a>
 
-          <p class = "artistInfo"><a href = "https://www.youtube.com/results?search_query={{artist.name}}">youtube</a></p>
-          <p class = "artistInfo"><a href = "{{artist.external_urls.spotify}}">spotify</a></p>
-          <p class = "artistInfo"><a href = "http://en.wikipedia.org/wiki/{{artist.newName}}">wiki</a></p>
-          <p class = "artistInfo"><a href = "http://www.discogs.com/search/?q={{artist.name}}">Discogs</a></p>
+            <p class = "artistName">{{artist.name}}</p>
+            <p class = "artistGenre">{{artist.genres[0]}}</p>
+          </div>
 
-          <p class = "artistBio">{{artist.bio}}</p>
+
+          <p class = "artistBio" ng-bind-html = "artist.bio"></p>
         </div>
       </div>
     </div>
