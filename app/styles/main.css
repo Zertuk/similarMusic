@@ -15,6 +15,18 @@ button {
   border: 1px solid #4b4b4b;
 }
 
+
+span {
+  font-size: 1em;
+}
+
+a {
+  text-decoration: none;
+  color: #383838;
+  font-size: 2em;
+
+}
+
 .container {
   padding-bottom: 10%;
 }
@@ -43,7 +55,7 @@ button {
 .artist {
   width: 80%;
   margin: 0 auto;
-  color: black;
+  color: #383838;
   background-color:  #dedede;
   display: inline-block;
 }
@@ -51,6 +63,11 @@ button {
 .artistImage {
   width: 100%;
   border-bottom: 1px solid #383838;
+}
+
+.artistCenter {
+  text-align: center;
+  padding-bottom: 8%;
 }
 
 .artistDescription {
