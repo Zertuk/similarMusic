@@ -58,6 +58,8 @@ a {
   color: #383838;
   background-color:  #dedede;
   display: inline-block;
+  border: 1px solid #dedede;
+
 }
 
 .artistImage {
@@ -102,7 +104,7 @@ a {
 
 @media (min-width: 900px) {
   .artist {
-    width: 30%;
+    width: 29.5%;
     margin: 1.66%;
   }
 }
