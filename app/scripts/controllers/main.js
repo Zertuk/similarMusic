@@ -48,17 +48,15 @@ angular.module('similarMusicApp')
     };
     $scope.wikiLookUp = function() {
       wikiArray = [];
-      wikiArray.length = 20;
       var count = 0;
       for (var i = 0; i < $scope.relatedArtists.artists.length; i++) {
-        function(index) {
-        $http.jsonp('http://en.wikipedia.org/w/api.php?format=json&action=query&prop=extracts&exsentences=10&titles=' + $scope.relatedArtists.artists[index].name + '&callback=JSON_CALLBACK').
+        $http.jsonp('http://en.wikipedia.org/w/api.php?format=json&action=query&prop=extracts&exsentences=10&titles=' + $scope.relatedArtists.artists[i].name + '&callback=JSON_CALLBACK').
         success (function(json) {
-          console.log(index);
           test = json.query.pages;
             for (var property in test) {
                 if (test.hasOwnProperty(property)) {
-                  wikiArray[count] = test[property];
+                  $scope.relatedArtists.artists[count].bio = test[property].extract;
+                  console.log(test[property].extract);
                   count = count + 1;
                   break;
                 }
@@ -66,7 +64,7 @@ angular.module('similarMusicApp')
         }).
         error (function() {
           console.log('Wiki retrieval error');
-        })}(i);      
+        });      
       };
 
     };
