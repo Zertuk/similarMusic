@@ -1,10 +1,10 @@
 @font-face {
   font-family: 'wiki';
-  src: url('../font/wiki.eot?78506853');
-  src: url('../font/wiki.eot?78506853#iefix') format('embedded-opentype'),
-       url('../font/wiki.woff?78506853') format('woff'),
-       url('../font/wiki.ttf?78506853') format('truetype'),
-       url('../font/wiki.svg?78506853#wiki') format('svg');
+  src: url('../font/wiki.eot?9506508');
+  src: url('../font/wiki.eot?9506508#iefix') format('embedded-opentype'),
+       url('../font/wiki.woff?9506508') format('woff'),
+       url('../font/wiki.ttf?9506508') format('truetype'),
+       url('../font/wiki.svg?9506508#wiki') format('svg');
   font-weight: normal;
   font-style: normal;
 }
@@ -14,7 +14,7 @@
 @media screen and (-webkit-min-device-pixel-ratio:0) {
   @font-face {
     font-family: 'wiki';
-    src: url('../font/wiki.svg?78506853#wiki') format('svg');
+    src: url('../font/wiki.svg?9506508#wiki') format('svg');
   }
 }
 */
@@ -58,3 +58,4 @@
 .icon-spotify:before { content: '\e805'; } /* '' */
 .icon-cd:before { content: '\e806'; } /* '' */
 .icon-mail-alt:before { content: '\e807'; } /* '' */
+.icon-arrows-cw:before { content: '\e808'; } /* '' */

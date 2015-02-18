@@ -9,13 +9,11 @@
  */
 var test;
 var wikiArray;
-var searchInput = "";
 
 angular.module('similarMusicApp')
   .controller('MainCtrl', function ($scope, $http) {
 
   	$scope.artistIDLookUp = function() {
-  		var searchInput = "";
   		$http.get('https://api.spotify.com/v1/search?q=' + $scope.searchInput + '&type=artist&limit=5').
   		success (function(json) {
 			if (json.artists.items[0] == undefined) {
