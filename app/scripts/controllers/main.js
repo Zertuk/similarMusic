@@ -50,7 +50,7 @@ angular.module('similarMusicApp')
       wikiArray = [];
       for (var i = 0; i < $scope.relatedArtists.artists.length; i++) {
         (function(i) {
-        $http.jsonp('http://en.wikipedia.org/w/api.php?format=json&action=query&prop=extracts&exsentences=10&titles=' + $scope.relatedArtists.artists[i].newName + '&callback=JSON_CALLBACK').
+        $http.jsonp('http://en.wikipedia.org/w/api.php?format=json&action=query&prop=extracts&exsentences=10&titles=' + $scope.relatedArtists.artists[i].name + '&callback=JSON_CALLBACK').
         success (function(json) {
           test = json.query.pages;
             for (var property in test) {
