@@ -50,15 +50,17 @@ a {
 
 .wrap {
   width: 100%;
+  text-align: center;
 }
 
 .artist {
-  width: 80%;
-  margin: 0 auto;
+  width: 90%;
+  margin-bottom: 10%;
   color: #383838;
   background-color:  #dedede;
   display: inline-block;
   border: 1px solid #dedede;
+  float: left;
 
 }
 
@@ -98,6 +100,15 @@ a {
 
 .artistBio {
   font-size: 1.15em;
+  text-align: left;
+}
+
+.artistTrackImage {
+  width: 100%;
+}
+
+audio {
+  width: 100%;
 }
 
 
