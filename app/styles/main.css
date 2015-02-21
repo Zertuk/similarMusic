@@ -84,14 +84,20 @@ a {
 
 .artistName {
   margin: 0;
-  font-size: 1.5em;
+  font-size: 1.75em;
+  margin-top: 5%;
 
 }
 
 .artistGenre {
   margin: 0;
   margin-bottom: 2%;
+  font-size: 1.25em;
   font-style: italic;
+}
+
+.artistBio {
+  font-size: 1.15em;
 }
 
 
