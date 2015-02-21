@@ -38,10 +38,11 @@
         <img class = "artistImage" ng-src  = "{{artist.images[1].url}}">
         <div class = "artistDescription">
           <div class = "artistCenter">
-            <a href = "https://www.youtube.com/results?search_query={{artist.name}}"><i class="icon-youtube"></i></a>
-            <a href = "{{artist.external_urls.spotify}}"><i class="icon-spotify"></i></a>
-            <a href = "http://en.wikipedia.org/wiki/{{artist.newName}}"><i class="icon-wikipedia"></i></a>
-            <a href = "http://www.discogs.com/search/?q={{artist.name}}"><i class="icon-cd"></i></a>
+            <a title = "Search on YouTube" href = "https://www.youtube.com/results?search_query={{artist.name}}"><i class="icon-youtube"></i></a>
+            <a title = "Find on Spotify" href = "{{artist.external_urls.spotify}}"><i class="icon-spotify"></i></a>
+            <a title = "Wikipedia" href = "http://en.wikipedia.org/wiki/{{artist.newName}}"><i class="icon-wikipedia"></i></a>
+            <a title = "Discography" href = "http://www.discogs.com/search/?q={{artist.name}}"><i class="icon-cd"></i></a>
+            <a title = "Search {{artist.name}}" href='#' ng-click = "relatedArtistLookUp(artist.id)"><i class="icon-arrows-cw"></i></a>
 
             <p class = "artistName">{{artist.name}}</p>
             <p class = "artistGenre">{{artist.genres[0]}}</p>
