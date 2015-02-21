@@ -25,15 +25,15 @@
     <![endif]-->
 
     <!-- Add your site or application content here -->
-    <div ng-controller="MainCtrl" class="container">
-      <form class = "searchForm" role = "form" ng-submit = "artistIDLookUp()">
-        <input type = "text" class = "searchInput" ng-model = "searchInput">
-        </input>
-        <span>
-          <button class = "searchButton" value = "Search" type = "submit">Search</button>
-        </span>
-      </form>
-      <div class = "wrap">
+  <div ng-controller="MainCtrl" class="container">
+    <form class = "searchForm" role = "form" ng-submit = "artistIDLookUp()">
+      <input type = "text" class = "searchInput" ng-model = "searchInput"></input>
+      <span>
+        <button class = "searchButton" value = "Search" type = "submit">Search</button>
+      </span>
+    </form>
+
+    <div class = "wrap">
       <div class = "artist" ng-repeat = "artist in relatedArtists.artists">
         <img class = "artistImage" ng-src  = "{{artist.images[1].url}}">
         <div class = "artistDescription">
@@ -46,14 +46,17 @@
 
             <p class = "artistName">{{artist.name}}</p>
             <p class = "artistGenre">{{artist.genres[0]}}</p>
-          </div>
+          </div><!--artistCenter-->
+          <p class = "artistTrackName">{{artist.tracks.name}}</p>
+          <audio ng-src ="{{artist.tracks.song_url}}" controls>
+          </audio>
+          <img ng-src = "{{artist.tracks.album.images[1].url}}" class = "artistTrackImage">
 
-
-          <p class = "artistBio" ng-bind-html = "artist.bio"></p>
-        </div>
-      </div>
-    </div>
-    </div>
+<!--           <p class = "artistBio" ng-bind-html = "artist.bio"></p>
+ -->        </div><!--artistDescription-->
+      </div><!--artist-->
+    </div><!--wrap-->
+  </div><!--container-->
 
 
     <!-- Google Analytics: change UA-XXXXX-X to be your site's ID -->
