@@ -11,7 +11,7 @@ var test;
 var wikiArray;
 
 angular.module('similarMusicApp')
-  .controller('MainCtrl', function ($scope, $http) {
+  .controller('MainCtrl', function ($scope, $http, $sce) {
 
   	$scope.artistIDLookUp = function() {
   		$http.get('https://api.spotify.com/v1/search?q=' + $scope.searchInput + '&type=artist&limit=5').
@@ -22,7 +22,6 @@ angular.module('similarMusicApp')
 			else {
 				var id = json.artists.items[0].id;
 				$scope.relatedArtistLookUp(id);
-				// $scope.albumLookUp(id);
 			}
   		}).
   		error (function() {
@@ -37,6 +36,7 @@ angular.module('similarMusicApp')
 				$scope.relatedArtists = relatedArtists;
         $scope.replaceSpaces($scope.relatedArtists);
         $scope.wikiLookUp();
+        $scope.trackLookUp();
 				console.log($scope.relatedArtists);
 		});
     $scope.replaceSpaces = function(relatedArtists) {
@@ -44,36 +44,41 @@ angular.module('similarMusicApp')
         $scope.relatedArtists.artists[i].newName = relatedArtists.artists[i].name.split(' ').join('_');
       }
     };
-    $scope.wikiLookUp = function() {
-      wikiArray = [];
+    $scope.trackLookUp = function() {
       for (var i = 0; i < $scope.relatedArtists.artists.length; i++) {
         (function(i) {
-        $http.jsonp('http://en.wikipedia.org/w/api.php?format=json&action=query&prop=extracts&exsentences=10&titles=' + $scope.relatedArtists.artists[i].name + '&callback=JSON_CALLBACK').
-        success (function(json) {
-          test = json.query.pages;
-            for (var property in test) {
-                if (test.hasOwnProperty(property)) {
-                  $scope.relatedArtists.artists[i].bio = test[property].extract;
-                  console.log(test[property].extract);
-                  break;
-                }
-            }
-        }).
-        error (function() {
-          console.log('Wiki retrieval error');
-        });
+          $http.get('https://api.spotify.com/v1/artists/' + $scope.relatedArtists.artists[i].id + '/top-tracks?country=US').
+          success (function(json) {
+            $scope.relatedArtists.artists[i].tracks = json.tracks[0];
+            console.log(json.tracks[0]);
+            $scope.relatedArtists.artists[i].tracks.song_url = $sce.trustAsResourceUrl($scope.relatedArtists.artists[i].tracks.preview_url);
+          }).
+          error (function() {
+            console.log('Related track lookup error');
+          });
+        })(i);
+      }
+    }
+    $scope.wikiLookUp = function() {
+      for (var i = 0; i < $scope.relatedArtists.artists.length; i++) {
+        (function(i) {
+          $http.jsonp('http://en.wikipedia.org/w/api.php?format=json&action=query&prop=extracts&exsentences=10&titles=' + $scope.relatedArtists.artists[i].name + '&callback=JSON_CALLBACK').
+          success (function(json) {
+            test = json.query.pages;
+              for (var property in test) {
+                  if (test.hasOwnProperty(property)) {
+                    $scope.relatedArtists.artists[i].bio = test[property].extract;
+                    console.log(test[property].extract);
+                    break;
+                  }
+              }
+          }).
+          error (function() {
+            console.log('Wiki retrieval error');
+          });
         })(i);   
       };
-
     };
   };
-
-  	// $scope.albumLookUp = function(id) {
-  	// 	$http.get('https://api.spotify.com/vi/artists/' + id + '/albums').
-  	// 	success (function(json) {
-  	// 		var albumList = json;
-  	// 		console.log(albumList);
-  	// 	});
-  	// };
-  });
+});
 
