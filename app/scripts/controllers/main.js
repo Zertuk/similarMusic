@@ -51,13 +51,23 @@ angular.module('similarMusicApp')
           success (function(json) {
             $scope.relatedArtists.artists[i].tracks = [json.tracks[0], json.tracks[1], json.tracks[2]];
             console.log($scope.relatedArtists.artists[i].tracks);
-            $scope.relatedArtists.artists[i].tracks.song_url = $sce.trustAsResourceUrl($scope.relatedArtists.artists[i].tracks.preview_url);
+            for (var j = 0; j < 3; j++) {
+              $scope.relatedArtists.artists[i].tracks[j].song_url = $sce.trustAsResourceUrl($scope.relatedArtists.artists[i].tracks[j].preview_url);
+            }
+            $scope.relatedArtists.artists[i].currentTrack = $scope.relatedArtists.artists[i].tracks[0].song_url;
+            $scope.relatedArtists.artists[i].currentTrackName = $scope.relatedArtists.artists[i].tracks[0].name;
+            $scope.relatedArtists.artists[i].index = i;
           }).
           error (function() {
             console.log('Related track lookup error');
           });
         })(i);
       }
+    }
+
+    $scope.switchSong = function(song, name, index) {
+      $scope.relatedArtists.artists[index].currentTrack = song;
+      $scope.relatedArtists.artists[index].currentTrackName = name;   
     }
 
     $scope.wikiLookUp = function() {

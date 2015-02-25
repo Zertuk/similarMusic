@@ -48,8 +48,7 @@
             <p class = "artistName">{{artist.name}}</p>
             <p class = "artistGenre">{{artist.genres[0]}}</p>
           </div><!--artistCenter-->
-<!--           <audio ng-src ="{{artist.tracks[0].song_url}}" controls>
-          </audio> -->
+
 
 
 
@@ -57,9 +56,13 @@
 <!--           <p class = "artistBio" ng-bind-html = "artist.bio"></p>
  -->        </div><!--artistDescription-->
 
- <img ng-src = "{{artist.tracks[0].album.images[1].url}}" class = "artistTrackImage">
-        <img ng-src = "{{artist.tracks[1].album.images[1].url}}" class = "artistTrackImage">
-        <img ng-src = "{{artist.tracks[2].album.images[1].url}}" class = "artistTrackImage">
+        <p>{{artist.currentTrackName}}</p>
+        <audio ng-src ="{{artist.currentTrack}}" controls>
+        </audio>
+
+        <img ng-src = "{{artist.tracks[0].album.images[1].url}}" class = "artistTrackImage" ng-click = "switchSong(artist.tracks[0].song_url, artist.tracks[0].name, artist.index)">
+        <img ng-src = "{{artist.tracks[1].album.images[1].url}}" class = "artistTrackImage" ng-click = "switchSong(artist.tracks[1].song_url, artist.tracks[1].name, artist.index)">
+        <img ng-src = "{{artist.tracks[2].album.images[1].url}}" class = "artistTrackImage" ng-click = "switchSong(artist.tracks[2].song_url, artist.tracks[2].name, artist.index)">
       </div><!--artist-->
     </div><!--wrap-->
   </div><!--container-->
@@ -105,6 +108,7 @@
     <script src="bower_components/imagesloaded/imagesloaded.js"></script>
     <script src="bower_components/angular-masonry/angular-masonry.js"></script>
     <script src="bower_components/angular-deckgrid/angular-deckgrid.js"></script>
+    <script src="bower_components/angular-audio/app/angular.audio.js"></script>
     <!-- endbower -->
     <!-- endbuild -->
 
