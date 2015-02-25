@@ -54,19 +54,17 @@ a {
 }
 
 .artist {
-  width: 90%;
-  margin-bottom: 10%;
+  width: 80%;
+  height: auto;
   color: #383838;
   background-color:  #dedede;
   display: inline-block;
-  border: 1px solid #dedede;
-  float: left;
+  margin-bottom: 10%;
 
 }
 
 .artistImage {
   width: 100%;
-  border-bottom: 1px solid #383838;
 }
 
 .artistCenter {
@@ -93,9 +91,10 @@ a {
 
 .artistGenre {
   margin: 0;
-  margin-bottom: 2%;
+  margin-bottom: -5%;
   font-size: 1.25em;
   font-style: italic;
+  height: 30px;
 }
 
 .artistBio {
@@ -103,19 +102,50 @@ a {
   text-align: left;
 }
 
-.artistTrackImage {
-  width: 100%;
+.artistTrackName {
+  height: 60px;
+  margin: 0;
+  background-color: #535151;
+  color: #dedede;
+  padding-top: 5px;
 }
+
+.artistTrackImage {
+  width: 33.33%;
+  display: inline-block;
+  margin-right: -2px;
+  margin-left: -2px;
+  margin-top: -7px;
+  margin-bottom: -7px;
+  opacity: 0.8;
+}
+
+.artistTrackImageWrap {
+}
+
+.artistTrackImage:hover {
+  cursor: pointer;
+  opacity: 1;
+
+}
+
+.artistTrackImage:active {
+  opacity: 0.9;
+}
+
+
+
 
 audio {
   width: 100%;
 }
 
 
-@media (min-width: 550px) {
+@media (min-width: 600px) {
   .artist {
     width: 45%;
     margin: 2.5%;
+    margin-bottom: 3%;
   }
 }
 
@@ -123,6 +153,7 @@ audio {
   .artist {
     width: 29.5%;
     margin: 1.66%;
+    margin-bottom: 3%;
   }
 }
 
