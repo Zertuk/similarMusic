@@ -10,7 +10,6 @@
 
 angular.module('similarMusicApp')
   .controller('MainCtrl', function ($scope, $http, $sce) {
-
   	$scope.artistIDLookUp = function() {
   		$http.get('https://api.spotify.com/v1/search?q=' + $scope.searchInput + '&type=artist&limit=5').
   		success (function(json) {
@@ -28,6 +27,7 @@ angular.module('similarMusicApp')
   	};
 
   	$scope.relatedArtistLookUp = function(id) {
+      $scope.ready = false;
   		$http.get('https://api.spotify.com/v1/artists/' + id + '/related-artists').
   		success (function(json) {
 				var relatedArtists = json;
@@ -35,7 +35,6 @@ angular.module('similarMusicApp')
         $scope.replaceSpaces($scope.relatedArtists);
         $scope.wikiLookUp();
         $scope.trackLookUp();
-				console.log($scope.relatedArtists);
 		});
 
     $scope.replaceSpaces = function(relatedArtists) {
@@ -57,6 +56,7 @@ angular.module('similarMusicApp')
             $scope.relatedArtists.artists[i].currentTrack = $scope.relatedArtists.artists[i].tracks[0].song_url;
             $scope.relatedArtists.artists[i].currentTrackName = $scope.relatedArtists.artists[i].tracks[0].name;
             $scope.relatedArtists.artists[i].index = i;
+            $scope.ready = true;
           }).
           error (function() {
             console.log('Related track lookup error');
