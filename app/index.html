@@ -33,7 +33,7 @@
       </span>
     </form>
 
-    <div class = "wrap" masonry>
+    <div class = "wrap" masonry preserve-order ng-show = "ready">
       <div class = "masonry-brick artist" ng-repeat = "artist in relatedArtists.artists">
         <img class = "artistImage" ng-src  = "{{artist.images[1].url}}">
         
@@ -48,21 +48,16 @@
             <p class = "artistName">{{artist.name}}</p>
             <p class = "artistGenre">{{artist.genres[0]}}</p>
           </div><!--artistCenter-->
+        </div><!--artistDescription-->
 
-
-
-
-
-<!--           <p class = "artistBio" ng-bind-html = "artist.bio"></p>
- -->        </div><!--artistDescription-->
-
-        <p>{{artist.currentTrackName}}</p>
+        <p class = "artistTrackName">{{artist.currentTrackName}}</p>
         <audio ng-src ="{{artist.currentTrack}}" controls>
         </audio>
-
-        <img ng-src = "{{artist.tracks[0].album.images[1].url}}" class = "artistTrackImage" ng-click = "switchSong(artist.tracks[0].song_url, artist.tracks[0].name, artist.index)">
-        <img ng-src = "{{artist.tracks[1].album.images[1].url}}" class = "artistTrackImage" ng-click = "switchSong(artist.tracks[1].song_url, artist.tracks[1].name, artist.index)">
-        <img ng-src = "{{artist.tracks[2].album.images[1].url}}" class = "artistTrackImage" ng-click = "switchSong(artist.tracks[2].song_url, artist.tracks[2].name, artist.index)">
+        <div class = "artistTrackImageWrap">
+          <img ng-src = "{{artist.tracks[0].album.images[1].url}}" class = "artistTrackImage" ng-click = "switchSong(artist.tracks[0].song_url, artist.tracks[0].name, artist.index)">
+          <img ng-src = "{{artist.tracks[1].album.images[1].url}}" class = "artistTrackImage" ng-click = "switchSong(artist.tracks[1].song_url, artist.tracks[1].name, artist.index)">
+          <img ng-src = "{{artist.tracks[2].album.images[1].url}}" class = "artistTrackImage" ng-click = "switchSong(artist.tracks[2].song_url, artist.tracks[2].name, artist.index)">
+        </div><!--artistTrackImageWrap-->
       </div><!--artist-->
     </div><!--wrap-->
   </div><!--container-->
@@ -89,6 +84,7 @@
     <!-- build:js(.) scripts/vendor.js -->
     <!-- bower:js -->
     <script src="bower_components/jquery/dist/jquery.js"></script>
+    <script src="bower_components/jquery-bridget/jquery.bridget.js"></script>
     <script src="bower_components/angular/angular.js"></script>
     <script src="bower_components/angular-animate/angular-animate.js"></script>
     <script src="bower_components/angular-cookies/angular-cookies.js"></script>
@@ -109,12 +105,11 @@
     <script src="bower_components/angular-masonry/angular-masonry.js"></script>
     <script src="bower_components/angular-deckgrid/angular-deckgrid.js"></script>
     <script src="bower_components/angular-audio/app/angular.audio.js"></script>
+    <script src="bower_components/angular-masonry-directive/src/angular-masonry-directive.js"></script>
     <!-- endbower -->
     <!-- endbuild -->
 
         <!-- build:js({.tmp,app}) scripts/scripts.js -->
-        <script src="scripts/masonry.pkgd.min"></script>
-        <script src="scripts/masonry"></script>
         <script src="scripts/app.js"></script>
         <script src="scripts/controllers/main.js"></script>
         <script src="scripts/controllers/about.js"></script>
