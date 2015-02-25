@@ -143,8 +143,9 @@ audio {
   opacity: 0.9;
 }
 
-
-
+.artistTrackAnchor {
+  font-size: 1em;
+}
 
 audio {
   width: 100%;
