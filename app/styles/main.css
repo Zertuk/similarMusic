@@ -27,6 +27,10 @@ a {
 
 }
 
+audio {
+
+}
+
 .container {
   padding-bottom: 10%;
 }
@@ -111,14 +115,20 @@ a {
 }
 
 .artistTrackImage {
+  float: left;
   width: 33.33%;
   display: inline-block;
-  margin-right: -2px;
-  margin-left: -2px;
+  margin-left: -0px;
   margin-top: -7px;
   margin-bottom: -7px;
   opacity: 0.8;
+  padding-bottom: 7px;
 }
+
+.artistTrackImage:first-of-type {
+  margin-left: 0px;
+}
+
 
 .artistTrackImageWrap {
 }
