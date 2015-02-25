@@ -33,16 +33,10 @@
       </span>
     </form>
 
-    <div class = "wrap">
-      <div class = "testage">
-        <img class = "testImage" src = "https://i.scdn.co/image/aa816c40ba1283f2425be80b0abdfffbf53ff98d">
-      </div>
-    </div>
-
-
-    <div class = "wrap">
-      <div class = "artist" ng-repeat = "artist in relatedArtists.artists">
+    <div class = "wrap" masonry>
+      <div class = "masonry-brick artist" ng-repeat = "artist in relatedArtists.artists">
         <img class = "artistImage" ng-src  = "{{artist.images[1].url}}">
+        
         <div class = "artistDescription">
           <div class = "artistCenter">
             <a title = "Search on YouTube" href = "https://www.youtube.com/results?search_query={{artist.name}}"><i class="icon-youtube"></i></a>
@@ -54,13 +48,18 @@
             <p class = "artistName">{{artist.name}}</p>
             <p class = "artistGenre">{{artist.genres[0]}}</p>
           </div><!--artistCenter-->
-          <p class = "artistTrackName">{{artist.tracks.name}}</p>
-          <audio ng-src ="{{artist.tracks.song_url}}" controls>
-          </audio>
-          <img ng-src = "{{artist.tracks.album.images[1].url}}" class = "artistTrackImage">
+<!--           <audio ng-src ="{{artist.tracks[0].song_url}}" controls>
+          </audio> -->
+
+
+
 
 <!--           <p class = "artistBio" ng-bind-html = "artist.bio"></p>
  -->        </div><!--artistDescription-->
+
+ <img ng-src = "{{artist.tracks[0].album.images[1].url}}" class = "artistTrackImage">
+        <img ng-src = "{{artist.tracks[1].album.images[1].url}}" class = "artistTrackImage">
+        <img ng-src = "{{artist.tracks[2].album.images[1].url}}" class = "artistTrackImage">
       </div><!--artist-->
     </div><!--wrap-->
   </div><!--container-->
@@ -105,6 +104,7 @@
     <script src="bower_components/masonry/masonry.js"></script>
     <script src="bower_components/imagesloaded/imagesloaded.js"></script>
     <script src="bower_components/angular-masonry/angular-masonry.js"></script>
+    <script src="bower_components/angular-deckgrid/angular-deckgrid.js"></script>
     <!-- endbower -->
     <!-- endbuild -->
 
