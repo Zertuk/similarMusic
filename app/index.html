@@ -39,18 +39,19 @@
         
         <div class = "artistDescription">
           <div class = "artistCenter">
-            <a title = "Search on YouTube" href = "https://www.youtube.com/results?search_query={{artist.name}}"><i class="icon-youtube"></i></a>
-            <a title = "Find on Spotify" href = "{{artist.external_urls.spotify}}"><i class="icon-spotify"></i></a>
-            <a title = "Wikipedia" href = "http://en.wikipedia.org/wiki/{{artist.newName}}"><i class="icon-wikipedia"></i></a>
-            <a title = "Discography" href = "http://www.discogs.com/search/?q={{artist.name}}"><i class="icon-cd"></i></a>
-            <a title = "Search {{artist.name}}" href='#' ng-click = "relatedArtistLookUp(artist.id)"><i class="icon-arrows-cw"></i></a>
+            <a target = "_blank" title = "Search on YouTube" href = "https://www.youtube.com/results?search_query={{artist.name}}"><i class="icon-youtube"></i></a>
+            <a target = "_blank" title = "Find on Spotify" href = "{{artist.external_urls.spotify}}"><i class="icon-spotify"></i></a>
+            <a target = "_blank" title = "Wikipedia" href = "http://en.wikipedia.org/wiki/{{artist.newName}}"><i class="icon-wikipedia"></i></a>
+            <a target = "_blank" title = "Discography" href = "http://www.discogs.com/search/?q={{artist.name}}"><i class="icon-cd"></i></a>
+            <a target = "_blank" title = "Search {{artist.name}}" href='#' ng-click = "relatedArtistLookUp(artist.id)"><i class="icon-arrows-cw"></i></a>
 
             <p class = "artistName">{{artist.name}}</p>
             <p class = "artistGenre">{{artist.genres[0]}}</p>
           </div><!--artistCenter-->
         </div><!--artistDescription-->
 
-        <p class = "artistTrackName">{{artist.currentTrackName}}</p>
+        <a target = "_blank" class = "artistTrackAnchor" title = "Search on YouTube" href = "https://www.youtube.com/results?search_query={{artist.name}} {{artist.currentTrackName}}"><p class = "artistTrackName">{{artist.currentTrackName}}</p></a>
+
         <audio ng-src ="{{artist.currentTrack}}" controls>
         </audio>
         <div class = "artistTrackImageWrap">
