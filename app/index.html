@@ -33,7 +33,7 @@
       </span>
     </form>
 
-    <div class = "wrap" masonry preserve-order ng-show = "ready">
+    <div class = "wrap" masonry ng-show = "ready">
       <div class = "masonry-brick artist" ng-repeat = "artist in relatedArtists.artists">
         <img class = "artistImage" ng-src  = "{{artist.images[1].url}}">
         
@@ -107,6 +107,7 @@
     <script src="bower_components/angular-deckgrid/angular-deckgrid.js"></script>
     <script src="bower_components/angular-audio/app/angular.audio.js"></script>
     <script src="bower_components/angular-masonry-directive/src/angular-masonry-directive.js"></script>
+    
     <!-- endbower -->
     <!-- endbuild -->
 
