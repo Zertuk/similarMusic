@@ -27,7 +27,7 @@
     <!-- Add your site or application content here -->
   <div ng-controller="MainCtrl" class="container">
     <form class = "searchForm" role = "form" ng-submit = "artistIDLookUp()">
-      <input type = "text" class = "searchInput" ng-model = "searchInput"></input>
+      <input type = "text" class = "searchInput" value = "search an artist" ng-model = "searchInput"></input>
       <span>
         <button class = "searchButton" value = "Search" type = "submit">Search</button>
       </span>
@@ -43,7 +43,7 @@
             <a target = "_blank" title = "Find on Spotify" href = "{{artist.external_urls.spotify}}"><i class="icon-spotify"></i></a>
             <a target = "_blank" title = "Wikipedia" href = "http://en.wikipedia.org/wiki/{{artist.newName}}"><i class="icon-wikipedia"></i></a>
             <a target = "_blank" title = "Discography" href = "http://www.discogs.com/search/?q={{artist.name}}"><i class="icon-cd"></i></a>
-            <a target = "_blank" title = "Search {{artist.name}}" href='#' ng-click = "relatedArtistLookUp(artist.id)"><i class="icon-arrows-cw"></i></a>
+            <a title = "Search {{artist.name}}" href='#' ng-click = "relatedArtistLookUp(artist.id)"><i class="icon-arrows-cw"></i></a>
 
             <p class = "artistName">{{artist.name}}</p>
             <p class = "artistGenre">{{artist.genres[0]}}</p>
@@ -107,7 +107,6 @@
     <script src="bower_components/angular-deckgrid/angular-deckgrid.js"></script>
     <script src="bower_components/angular-audio/app/angular.audio.js"></script>
     <script src="bower_components/angular-masonry-directive/src/angular-masonry-directive.js"></script>
-    
     <!-- endbower -->
     <!-- endbuild -->
 
