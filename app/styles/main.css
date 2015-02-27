@@ -109,7 +109,7 @@ audio {
 .artistTrackName {
   height: 60px;
   margin: 0;
-  background-color: #535151;
+  background-color: #2F2C2D;
   color: #dedede;
   padding-top: 5px;
 }
@@ -149,6 +149,8 @@ audio {
 
 audio {
   width: 100%;
+  background-color: #535151;
+  border-radius: 0px;
 }
 
 
