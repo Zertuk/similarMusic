@@ -9,37 +9,33 @@
  */
 
 angular.module('similarMusicApp')
-  .controller('MainCtrl', function ($scope, $http, $sce, $location) {
+  .controller('MainCtrl', function ($scope, $http, $sce, $location, mainService) {
+    
     //finds artist ID from user input and then sends ID to relatedArtistLookup to find related artists
-  	$scope.artistIDLookUp = function() {
-  		$http.get('https://api.spotify.com/v1/search?q=' + $scope.searchInput + '&type=artist&limit=5').
-  		success (function(json) {
-			if (json.artists.items[0] == undefined) {
-				console.log('invalid artist ID');
-			}
-			else {
-				var id = json.artists.items[0].id;
-				$scope.relatedArtistLookUp(id);
-			}
-  		}).
-  		error (function() {
-  			console.log('invalid artist ID');
-  		});
+    $scope.artistIDLookUp = function() {
+      mainService.getArtistId($scope.searchInput).then(function(data) {
+        if (data.artists.items[0] == undefined) {
+          console.log('invalid artist ID');
+        }
+        else {
+          console.log('ok')
+          var id = data.artists.items[0].id;
+          $scope.relatedArtistLookUp(id);
+        }
+      })
   	};
 
   	$scope.relatedArtistLookUp = function(id) {
-      $scope.ready = false;
-  		$http.get('https://api.spotify.com/v1/artists/' + id + '/related-artists').
-  		success (function(json) {
-				var relatedArtists = json;
-				$scope.relatedArtists = relatedArtists;
+      mainService.getRelatedArtists(id).then(function(data) {
+        $scope.relatedArtists = data;
         $scope.relatedArtistFunctions($scope.relatedArtists);
-    });
+      });
+    };
 
     //mass function call for relatedArtists
     $scope.relatedArtistFunctions = function(relatedArtists) {
       $scope.replaceSpaces(relatedArtists);
-      $scope.wikiLookUp();
+      // $scope.wikiLookUp();
       $scope.trackLookUp();
     };
 
@@ -53,8 +49,7 @@ angular.module('similarMusicApp')
     $scope.trackLookUp = function() {
       for (var i = 0; i < $scope.relatedArtists.artists.length; i++) {
         (function(i) {
-          $http.get('https://api.spotify.com/v1/artists/' + $scope.relatedArtists.artists[i].id + '/top-tracks?country=US').
-          success (function(json) {
+          mainService.getArtistTracks($scope.relatedArtists.artists[i].id).then(function(json) {
             $scope.relatedArtists.artists[i].tracks = [json.tracks[0], json.tracks[1], json.tracks[2]];
             console.log($scope.relatedArtists.artists[i].tracks);
             for (var j = 0; j < 3; j++) {
@@ -64,10 +59,7 @@ angular.module('similarMusicApp')
             $scope.relatedArtists.artists[i].currentTrackName = $scope.relatedArtists.artists[i].tracks[0].name;
             $scope.relatedArtists.artists[i].index = i;
             $scope.ready = true;
-          }).
-          error (function() {
-            console.log('Related track lookup error');
-          });
+          })
         })(i);
       }
     }
@@ -75,7 +67,7 @@ angular.module('similarMusicApp')
     $scope.switchSong = function(song, name, index) {
       $scope.relatedArtists.artists[index].currentTrack = song;
       $scope.relatedArtists.artists[index].currentTrackName = name;   
-    }
+    };
     //finds the first ~paragraph or so of a wikipedia page
     $scope.wikiLookUp = function() {
       for (var i = 0; i < $scope.relatedArtists.artists.length; i++) {
@@ -95,7 +87,6 @@ angular.module('similarMusicApp')
           });
         })(i);   
       };
-    };
-  };
+    };  
 });
 
