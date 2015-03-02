@@ -161,6 +161,16 @@ nav a {
   font-size: 1em;
 }
 
+#aboutLink {
+  color: orange;
+  font-size: 1em;
+}
+
+.aboutText {
+  font-size: 1.5em;
+}
+
+
 audio {
   width: 100%;
   background-color: #535151;
