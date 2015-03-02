@@ -27,8 +27,22 @@ a {
 
 }
 
+nav {
+  background-color: #dedede;
+  position: fixed;
+  margin-top: -100px;
+  width: 100%;
+  opacity: 1;
+  z-index: 2;
+}
+
 nav a {
-  color: white;
+  margin-left: 35px;
+  font-size: 1.5em;
+}
+
+.view {
+  margin-top: 100px;
 }
 
 .container {
@@ -46,8 +60,8 @@ nav a {
 }
 
 .searchForm {
+
   width: 100%;
-  margin-top: 5%;
   text-align: center;
 
 }
