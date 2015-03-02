@@ -24,44 +24,12 @@
       <p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
     <![endif]-->
 
-    <!-- Add your site or application content here -->
-  <div ng-controller="MainCtrl" class="container">
-    <form class = "searchForm" role = "form" ng-submit = "artistIDLookUp()">
-      <input type = "text" class = "searchInput" value = "search an artist" ng-model = "searchInput"></input>
-      <span>
-        <button class = "searchButton" value = "Search" type = "submit">Search</button>
-      </span>
-    </form>
+    <nav>
+      <a href = "/#/home">Home</a>
+      <a href = "/#/about">About</a>
 
-    <div class = "wrap" masonry ng-show = "ready">
-      <div class = "masonry-brick artist" ng-repeat = "artist in relatedArtists.artists">
-        <img class = "artistImage" ng-src  = "{{artist.images[1].url}}">
-        
-        <div class = "artistDescription">
-          <div class = "artistCenter">
-            <a target = "_blank" title = "Search on YouTube" href = "https://www.youtube.com/results?search_query={{artist.name}}"><i class="icon-youtube"></i></a>
-            <a target = "_blank" title = "Find on Spotify" href = "{{artist.external_urls.spotify}}"><i class="icon-spotify"></i></a>
-            <a target = "_blank" title = "Wikipedia" href = "http://en.wikipedia.org/wiki/{{artist.newName}}"><i class="icon-wikipedia"></i></a>
-            <a target = "_blank" title = "Discography" href = "http://www.discogs.com/search/?q={{artist.name}}"><i class="icon-cd"></i></a>
-            <a title = "Search {{artist.name}}" href='#' ng-click = "relatedArtistLookUp(artist.id)"><i class="icon-arrows-cw"></i></a>
-
-            <p class = "artistName">{{artist.name}}</p>
-            <p class = "artistGenre">{{artist.genres[0]}}</p>
-          </div><!--artistCenter-->
-        </div><!--artistDescription-->
-
-        <a target = "_blank" class = "artistTrackAnchor" title = "Search on YouTube" href = "https://www.youtube.com/results?search_query={{artist.name}} {{artist.currentTrackName}}"><p class = "artistTrackName">{{artist.currentTrackName}}</p></a>
-
-        <audio ng-src ="{{artist.currentTrack}}" controls>
-        </audio>
-        <div class = "artistTrackImageWrap">
-          <img ng-src = "{{artist.tracks[0].album.images[1].url}}" class = "artistTrackImage" ng-click = "switchSong(artist.tracks[0].song_url, artist.tracks[0].name, artist.index)">
-          <img ng-src = "{{artist.tracks[1].album.images[1].url}}" class = "artistTrackImage" ng-click = "switchSong(artist.tracks[1].song_url, artist.tracks[1].name, artist.index)">
-          <img ng-src = "{{artist.tracks[2].album.images[1].url}}" class = "artistTrackImage" ng-click = "switchSong(artist.tracks[2].song_url, artist.tracks[2].name, artist.index)">
-        </div><!--artistTrackImageWrap-->
-      </div><!--artist-->
-    </div><!--wrap-->
-  </div><!--container-->
+    </nav>    
+    <div ng-view></div>
 
 
     <!-- Google Analytics: change UA-XXXXX-X to be your site's ID -->
@@ -104,9 +72,6 @@
     <script src="bower_components/masonry/masonry.js"></script>
     <script src="bower_components/imagesloaded/imagesloaded.js"></script>
     <script src="bower_components/angular-masonry/angular-masonry.js"></script>
-    <script src="bower_components/angular-deckgrid/angular-deckgrid.js"></script>
-    <script src="bower_components/angular-audio/app/angular.audio.js"></script>
-    <script src="bower_components/angular-masonry-directive/src/angular-masonry-directive.js"></script>
     <!-- endbower -->
     <!-- endbuild -->
 

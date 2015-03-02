@@ -9,7 +9,7 @@
  */
 
 angular.module('similarMusicApp')
-  .controller('MainCtrl', function ($scope, $http, $sce) {
+  .controller('MainCtrl', function ($scope, $http, $sce, $location) {
     //finds artist ID from user input and then sends ID to relatedArtistLookup to find related artists
   	$scope.artistIDLookUp = function() {
   		$http.get('https://api.spotify.com/v1/search?q=' + $scope.searchInput + '&type=artist&limit=5').
